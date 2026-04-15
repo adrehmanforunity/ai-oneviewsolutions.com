@@ -12,7 +12,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "next": "^14.0.0",
-    "three": "^r128",
+    "three": "^0.160.0",
     "@react-three/fiber": "^8.14.0",
     "@react-three/drei": "^9.88.0",
     "tailwindcss": "^3.3.0",
@@ -24,7 +24,7 @@
     "@types/node": "^20.5.0",
     "@types/react": "^18.2.20",
     "@types/react-dom": "^18.2.7",
-    "@types/three": "^r128",
+    "@types/three": "^0.160.0",
     "eslint": "^8.48.0",
     "eslint-config-next": "^14.0.0"
   }
