@@ -296,8 +296,41 @@ This feature is critical for multi-tenant isolation, cost control, and operation
 #### Constraints
 
 - Tenant isolation must be enforced at the database query level (not just UI level)
-- API keys must never be shared across tenants
+- API keys must never be shared across tenants without explicit admin action
 - Audit logs must include tenant_id for every operation
+
+---
+
+### Requirement 16: Role-Based Key Management & Sharing
+
+**User Story:** As a Super Admin, I want to add API keys for any tenant and optionally share them with other tenants, while Tenant Admins can only add keys for their own tenant. All key operations must be logged with user role and action details.
+
+#### Acceptance Criteria
+
+1. WHEN a Tenant Admin adds an API key, THE System SHALL automatically assign it to their tenant only
+2. WHEN a Tenant Admin adds a key, THE System SHALL log the action with: user_id, role (Tenant Admin), tenant_id, action (add), timestamp
+3. WHEN a Tenant Admin attempts to add a key for another tenant, THE System SHALL return 403 Forbidden
+4. WHEN a Super Admin adds an API key, THE System SHALL require selecting a primary tenant
+5. WHEN a Super Admin adds a key, THE System SHALL allow optionally sharing it with other tenants (multi-tenant key)
+6. WHEN a Super Admin adds a key, THE System SHALL log the action with: user_id, role (Super Admin), primary_tenant_id, shared_tenants, action (add), timestamp
+7. WHEN a Super Admin shares a key with additional tenants, THE System SHALL create key_sharing records linking the key to each tenant
+8. WHEN a Super Admin disables a shared key, THE System SHALL disable it for all tenants that have access
+9. WHEN a Super Admin enables a shared key, THE System SHALL enable it for all tenants that have access
+10. WHEN a Super Admin removes a tenant from a shared key, THE System SHALL log the action and prevent that tenant from using the key
+11. WHEN a Tenant Admin views their keys, THE System SHALL display both: keys owned by their tenant AND keys shared with their tenant
+12. WHEN a Tenant Admin attempts to modify a shared key (not owned by their tenant), THE System SHALL return 403 Forbidden
+13. WHEN a Tenant Admin attempts to delete a shared key (not owned by their tenant), THE System SHALL return 403 Forbidden
+14. WHEN a key is used in a conversation, THE System SHALL verify that the key is either owned by or shared with the conversation's tenant
+15. WHEN any key operation occurs (add, delete, enable, disable, share, unshare), THE System SHALL log: user_id, user_role, action_type, key_id, primary_tenant_id, affected_tenants, timestamp, status
+
+#### Constraints
+
+- Tenant Admins can only add keys for their own tenant
+- Super Admins can add keys for any tenant and share with multiple tenants
+- Shared keys must be tracked separately from owned keys
+- All key operations must be logged with user role and affected tenants
+- Disabling/enabling shared keys must affect all tenants simultaneously
+- Key ownership cannot be transferred (only sharing is allowed)
 
 ---
 
