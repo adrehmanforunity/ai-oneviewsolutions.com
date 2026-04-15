@@ -17,6 +17,41 @@
   left: 0;
 }
 
+.topLeft {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  z-index: 20;
+  animation: fadeInDown 1s ease-out;
+}
+
+.companyLogo {
+  width: 100px;
+  height: auto;
+  filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.5));
+}
+
+.bottomRight {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 20;
+  text-align: right;
+  animation: fadeInUp 1s ease-out 0.3s both;
+}
+
+.comingSoon {
+  font-size: 0.875rem;
+  color: #00d4ff;
+  font-weight: 600;
+}
+
+.domain {
+  font-size: 0.75rem;
+  color: #0066cc;
+  margin-top: 0.25rem;
+}
+
 .cube {
   position: absolute;
   width: 200px;
@@ -75,6 +110,27 @@
   color: white;
 }
 
+.appLogoContainer {
+  margin-bottom: 2rem;
+  animation: fadeInDown 1s ease-out 0.1s both;
+}
+
+.appLogo {
+  width: 140px;
+  height: auto;
+  filter: drop-shadow(0 0 15px rgba(0, 212, 255, 0.6));
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 15px rgba(0, 212, 255, 0.6));
+  }
+  50% {
+    filter: drop-shadow(0 0 25px rgba(0, 212, 255, 0.9));
+  }
+}
+
 .title {
   font-size: 4rem;
   font-weight: bold;
@@ -83,14 +139,21 @@
   -webkit-text-fill-color: transparent;
   background-clip: text;
   margin-bottom: 1rem;
-  animation: fadeInDown 1s ease-out;
+  animation: fadeInDown 1s ease-out 0.2s both;
 }
 
 .subtitle {
   font-size: 1.5rem;
   color: #00d4ff;
+  margin-bottom: 0.5rem;
+  animation: fadeInUp 1s ease-out 0.3s both;
+}
+
+.company {
+  font-size: 1rem;
+  color: #0066cc;
   margin-bottom: 2rem;
-  animation: fadeInUp 1s ease-out 0.2s both;
+  animation: fadeInUp 1s ease-out 0.4s both;
 }
 
 .loader {
