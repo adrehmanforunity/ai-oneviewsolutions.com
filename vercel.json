@@ -1,0 +1,14 @@
+{
+  "buildCommand": "next build",
+  "devCommand": "next dev",
+  "installCommand": "npm install",
+  "framework": "nextjs",
+  "env": {
+    "DATABASE_URL": {
+      "description": "PostgreSQL connection string"
+    },
+    "DATABASE_URL_UNPOOLED": {
+      "description": "PostgreSQL unpooled connection string"
+    }
+  }
+}
