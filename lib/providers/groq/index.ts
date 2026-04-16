@@ -302,7 +302,7 @@ export async function sendSTTRequest(
 
   try {
     const formData = new FormData();
-    const audioBlob = new Blob([request.audio], { type: 'audio/wav' });
+    const audioBlob = new Blob([request.audio as unknown as ArrayBuffer], { type: 'audio/wav' });
     formData.append('file', audioBlob, 'audio.wav');
     formData.append('model', request.model);
     if (request.language) {

@@ -267,7 +267,7 @@ export async function markKeyRateLimited(
   keyId: string,
   tenantId: string,
   resetTime?: Date
-): Promise<KeyHealth> {
+): Promise<HealthStatusUpdate> {
   return updateKeyHealth(keyId, tenantId, 'rate_limited', 'Marked as rate-limited', resetTime);
 }
 
@@ -674,3 +674,5 @@ export default {
   getInvalidKeys,
   getActiveKeys,
 };
+
+

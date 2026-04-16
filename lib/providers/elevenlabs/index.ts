@@ -184,7 +184,7 @@ export async function sendSTTRequest(
   const startTime = Date.now();
   try {
     const formData = new FormData();
-    const audioBlob = new Blob([request.audio], { type: "audio/wav" });
+    const audioBlob = new Blob([request.audio as unknown as ArrayBuffer], { type: "audio/wav" });
     formData.append("file", audioBlob, "audio.wav");
     formData.append("model_id", request.modelId ?? "scribe_v1");
     const response = await fetch(`${ELEVENLABS_BASE_URL}/v1/speech-to-text`, {

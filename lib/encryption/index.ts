@@ -214,7 +214,7 @@ export function decryptApiKey(encrypted: string): string {
     decipher.setAuthTag(authTag);
 
     // Decrypt data
-    let decrypted = decipher.update(ciphertext, 'binary', 'utf8');
+    let decrypted = decipher.update(ciphertext as unknown as string, 'binary', 'utf8');
     decrypted += decipher.final('utf8');
 
     return decrypted;

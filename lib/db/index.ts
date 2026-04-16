@@ -4,6 +4,7 @@
  */
 
 import { Pool, PoolClient, QueryResult, QueryResultRow } from 'pg';
+export type { PoolClient };
 
 // ============================================================================
 // DATABASE CONNECTION POOL
