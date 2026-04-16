@@ -365,8 +365,5 @@ export async function testKey(apiKey: string): Promise<KeyTestResult> {
 // EXPORTS
 // ============================================================================
 
-export default {
-  sendLLMRequest,
-  testKey,
-  ProviderError,
-};
+const claudeProvider = { sendLLMRequest, testKey, ProviderError };
+export default claudeProvider;

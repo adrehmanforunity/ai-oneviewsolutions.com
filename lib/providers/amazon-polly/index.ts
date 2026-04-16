@@ -220,4 +220,5 @@ export async function testKey(apiKey: string): Promise<KeyTestResult> {
   }
 }
 
-export default { sendTTSRequest, listVoices, testKey, ProviderError };
+const amazonPollyProvider = { sendTTSRequest, listVoices, testKey, ProviderError };
+export default amazonPollyProvider;

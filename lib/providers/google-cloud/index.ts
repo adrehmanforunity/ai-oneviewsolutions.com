@@ -273,4 +273,5 @@ export async function testKey(apiKey: string): Promise<KeyTestResult> {
   }
 }
 
-export default { sendTTSRequest, sendSTTRequest, listVoices, testKey, ProviderError };
+const googleCloudProvider = { sendTTSRequest, sendSTTRequest, listVoices, testKey, ProviderError };
+export default googleCloudProvider;

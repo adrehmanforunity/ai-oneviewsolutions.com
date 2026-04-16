@@ -522,9 +522,5 @@ async function testTTSKey(apiKey: string): Promise<KeyTestResult> {
 // EXPORTS
 // ============================================================================
 
-export default {
-  sendLLMRequest,
-  sendTTSRequest,
-  testKey,
-  ProviderError,
-};
+const openaiProvider = { sendLLMRequest, sendTTSRequest, testKey, ProviderError };
+export default openaiProvider;

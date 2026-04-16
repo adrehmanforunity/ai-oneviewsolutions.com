@@ -431,9 +431,5 @@ export async function testKey(apiKey: string): Promise<KeyTestResult> {
 // EXPORTS
 // ============================================================================
 
-export default {
-  sendLLMRequest,
-  sendSTTRequest,
-  testKey,
-  ProviderError,
-};
+const groqProvider = { sendLLMRequest, sendSTTRequest, testKey, ProviderError };
+export default groqProvider;

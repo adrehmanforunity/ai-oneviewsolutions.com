@@ -118,14 +118,5 @@ export function getProvider(name: ProviderName) {
   return (providerRegistry as any)[name];
 }
 
-export default {
-  groq,
-  claude,
-  openai,
-  elevenlabs,
-  upliftAi,
-  googleCloud,
-  amazonPolly,
-  providerRegistry,
-  getProvider,
-};
+const providers = { groq, claude, openai, elevenlabs, upliftAi, googleCloud, amazonPolly, providerRegistry, getProvider };
+export default providers;

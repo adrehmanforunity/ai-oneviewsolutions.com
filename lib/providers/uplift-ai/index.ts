@@ -1,21 +1,20 @@
 /**
  * Uplift AI API Client Library
  * Handles TTS requests with Urdu support, voice listing, key testing, and error handling
- *
  * Requirements: 1.7, 1.8, 1.9, 3.8, 5.1, 5.2, 5.3, 5.4, 5.5, 5.6, 5.7, 14.1, 14.2, 14.3
  */
 
 const UPLIFT_BASE_URL = "https://api.upliftai.com/v1";
 const KEY_TEST_TIMEOUT_MS = 3000;
 const DEFAULT_TIMEOUT_MS = 30000;
-const KEY_TEST_TEXT = "ہیلو";
+const KEY_TEST_TEXT = "Hi";
 const KEY_TEST_VOICE_ID = "ur-PK-UroojNeural";
 
 export interface TTSRequest {
   voiceId: string;
   text: string;
-  speed?: number;   // 0.5 - 2.0
-  pitch?: number;   // -20 to +20
+  speed?: number;
+  pitch?: number;
 }
 
 export interface TTSResponse {
@@ -202,4 +201,5 @@ export async function testKey(apiKey: string): Promise<KeyTestResult> {
   }
 }
 
-export default { sendTTSRequest, listVoices, testKey, ProviderError };
+const upliftAiProvider = { sendTTSRequest, listVoices, testKey, ProviderError };
+export default upliftAiProvider;
