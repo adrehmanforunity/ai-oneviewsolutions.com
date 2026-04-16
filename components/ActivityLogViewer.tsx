@@ -159,7 +159,7 @@ export default function ActivityLogViewer({ tenantId: propTenantId }: ActivityLo
       const data: ActivityLogResponse = await response.json()
 
       if (!data.success) {
-        throw new Error(data.error?.message || 'Failed to fetch activity log')
+        throw new Error((data as any).error?.message || 'Failed to fetch activity log')
       }
 
       setEntries(data.data.items)

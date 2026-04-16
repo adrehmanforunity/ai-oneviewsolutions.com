@@ -138,7 +138,7 @@ function exportAsPDF(records: any[]): NextResponse {
 
   const pdfContent = generateSimplePDF(records);
 
-  return new NextResponse(pdfContent, {
+  return new NextResponse(pdfContent as unknown as BodyInit, {
     status: 200,
     headers: {
       'Content-Type': 'application/pdf',

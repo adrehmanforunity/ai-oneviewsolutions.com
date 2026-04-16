@@ -3,7 +3,7 @@
  * Provides connection pooling, query execution, and tenant isolation
  */
 
-import { Pool, PoolClient, QueryResult } from 'pg';
+import { Pool, PoolClient, QueryResult, QueryResultRow } from 'pg';
 
 // ============================================================================
 // DATABASE CONNECTION POOL
@@ -156,13 +156,13 @@ export async function queryCount(
  * @param values Additional query parameters (tenant_id will be prepended)
  * @returns Query result
  */
-export async function tenantQuery<T = any>(
+export async function tenantQuery<T extends QueryResultRow = any>(
   tenantId: string,
-  query: string,
+  sql: string,
   values?: any[]
 ): Promise<QueryResult<T>> {
   const params = [tenantId, ...(values || [])];
-  return query<T>(query, params);
+  return query<T>(sql, params);
 }
 
 /**
@@ -172,7 +172,7 @@ export async function tenantQuery<T = any>(
  * @param values Additional query parameters
  * @returns First row or null
  */
-export async function tenantQueryOne<T = any>(
+export async function tenantQueryOne<T extends QueryResultRow = any>(
   tenantId: string,
   query: string,
   values?: any[]
@@ -188,7 +188,7 @@ export async function tenantQueryOne<T = any>(
  * @param values Additional query parameters
  * @returns Array of rows
  */
-export async function tenantQueryMany<T = any>(
+export async function tenantQueryMany<T extends QueryResultRow = any>(
   tenantId: string,
   query: string,
   values?: any[]
@@ -388,7 +388,7 @@ export async function withTransaction<T>(
  * @param values Query parameters
  * @returns Query result
  */
-export async function transactionQuery<T = any>(
+export async function transactionQuery<T extends QueryResultRow = any>(
   client: PoolClient,
   query: string,
   values?: any[]
@@ -404,7 +404,7 @@ export async function transactionQuery<T = any>(
  * @param values Additional query parameters
  * @returns Query result
  */
-export async function transactionTenantQuery<T = any>(
+export async function transactionTenantQuery<T extends QueryResultRow = any>(
   client: PoolClient,
   tenantId: string,
   query: string,
@@ -733,7 +733,7 @@ export function classifyDatabaseError(
  * @param values Query parameters
  * @returns Query result or throws DatabaseError
  */
-export async function queryWithErrorHandling<T = any>(
+export async function queryWithErrorHandling<T extends QueryResultRow = any>(
   queryStr: string,
   values?: any[]
 ): Promise<QueryResult<T>> {
@@ -749,4 +749,4 @@ export async function queryWithErrorHandling<T = any>(
 // EXPORT TYPES AND INTERFACES
 // ============================================================================
 
-export type { PoolConfig, RetryConfig, HealthCheckResult };
+export type { PoolConfig, RetryConfig };

@@ -39,7 +39,7 @@ export interface EmailValidationResult {
 const RFC5322_EMAIL_REGEX = /^[a-zA-Z0-9._+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/;
 
 // More permissive pattern for international domain names (IDN)
-const IDN_EMAIL_REGEX = /^[a-zA-Z0-9._+\-]+@[a-zA-Z0-9.\-\u0080-\uFFFF]+\.[a-zA-Z\u0080-\uFFFF]{2,}$/u;
+const IDN_EMAIL_REGEX = /^[a-zA-Z0-9._+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/;
 
 // Maximum email length (RFC 5321)
 const MAX_EMAIL_LENGTH = 254;

@@ -94,9 +94,9 @@ function handleErrorResponse(
     throw new ProviderError(body?.message || body?.error || "Rate limit exceeded", "RATE_LIMITED", 429);
   }
   if (status >= 500) {
-    throw new ProviderError(body?.message || body?.error || Server error (HTTP ), "SERVER_ERROR", status);
+    throw new ProviderError(body?.message || body?.error || `Server error (HTTP ${status})`, "SERVER_ERROR", status);
   }
-  throw new ProviderError(body?.message || body?.error || Unexpected HTTP status , "SERVER_ERROR", status);
+  throw new ProviderError(body?.message || body?.error || `Unexpected HTTP status ${status}`, "SERVER_ERROR", status);
 }
 
 export async function sendTTSRequest(
