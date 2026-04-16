@@ -1,0 +1,61 @@
+
+> ai-provider-management@0.1.0 test
+> vitest app/api/keys/keys.integration.test.ts --run
+
+The CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.
+
+[7m[1m[36m RUN [39m[22m[27m [36mv1.6.1[39m [90mC:/Users/user/Desktop/nProPhonyWEB/ai.oneviewsolutions.com[39m
+
+ [33mΓ¥»[39m app/api/keys/keys.integration.test.ts [2m ([22m[2m46 tests[22m [2m|[22m [31m2 failed[39m[2m)[22m[90m 42[2mms[22m[39m
+[31m   [33mΓ¥»[31m app/api/keys/keys.integration.test.ts[2m > [22mAPI Key Management Integration Tests[2m > [22mEmail Validation[2m > [22mshould reject invalid email addresses[39m
+[31m     ΓåÆ expected 'user..name@example.com' not to match /^[a-zA-Z0-9._+\-]+@[a-zA-Z0-9.\-]+\.[ΓÇª/[39m
+[31m   [33mΓ¥»[31m app/api/keys/keys.integration.test.ts[2m > [22mAPI Key Management Integration Tests[2m > [22mKey Masking[2m > [22mshould mask API keys correctly[39m
+[31m     ΓåÆ expected 'gsk_...f456' to be 'gsk_...456' // Object.is equality[39m
+
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ» Failed Tests 2 ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»
+
+ FAIL  app/api/keys/keys.integration.test.ts > API Key Management Integration Tests > Email Validation > should reject invalid email addresses
+AssertionError: expected 'user..name@example.com' not to match /^[a-zA-Z0-9._+\-]+@[a-zA-Z0-9.\-]+\.[ΓÇª/
+
+- Expected: 
+/^[a-zA-Z0-9._+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/
+
++ Received: 
+"user..name@example.com"
+
+ Γ¥» app/api/keys/keys.integration.test.ts:38:27
+     36| 
+     37|       invalidEmails.forEach(email => {
+     38|         expect(email).not.toMatch(/^[a-zA-Z0-9._+\-]+@[a-zA-Z0-9.\-]+\ΓÇª
+       |                           ^
+     39|       });
+     40|     });
+ Γ¥» app/api/keys/keys.integration.test.ts:37:21
+
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[1/2]ΓÄ»
+
+ FAIL  app/api/keys/keys.integration.test.ts > API Key Management Integration Tests > Key Masking > should mask API keys correctly
+AssertionError: expected 'gsk_...f456' to be 'gsk_...456' // Object.is equality
+
+- Expected
++ Received
+
+- gsk_...456
++ gsk_...f456
+
+ Γ¥» app/api/keys/keys.integration.test.ts:67:24
+     65|         }
+     66| 
+     67|         expect(masked).toBe(expected);
+       |                        ^
+     68|       });
+     69|     });
+ Γ¥» app/api/keys/keys.integration.test.ts:55:17
+
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[2/2]ΓÄ»
+
+[2m Test Files [22m [1m[31m1 failed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[31m2 failed[39m[22m[2m | [22m[1m[32m44 passed[39m[22m[90m (46)[39m
+[2m   Start at [22m 14:13:37
+[2m   Duration [22m 1.67s[2m (transform 90ms, setup 0ms, collect 92ms, tests 42ms, environment 0ms, prepare 293ms)[22m
+

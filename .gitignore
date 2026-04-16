@@ -1,3 +1,6 @@
+# info not to commit on git
+/info
+
 # dependencies
 /node_modules
 /.pnp

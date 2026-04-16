@@ -1,0 +1,706 @@
+/* ============================================================================
+   VOICE STUDIO COMPONENT STYLES
+   ============================================================================ */
+
+.container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #000 0%, #0a0e27 100%);
+  color: #ffffff;
+  padding: 2rem;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+  animation: fadeInDown 0.6s ease-out;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  background: linear-gradient(135deg, #00d4ff 0%, #0066cc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: #00d4ff;
+  opacity: 0.8;
+}
+
+.content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ============================================================================
+   SECTIONS
+   ============================================================================ */
+
+.section {
+  background: rgba(10, 14, 39, 0.8);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  border-radius: 12px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  animation: fadeInUp 0.6s ease-out;
+  backdrop-filter: blur(10px);
+}
+
+.sectionTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #00d4ff;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* ============================================================================
+   PROVIDER SELECTOR
+   ============================================================================ */
+
+.providerGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+}
+
+.providerButton {
+  padding: 1rem;
+  background: rgba(0, 102, 204, 0.1);
+  border: 2px solid rgba(0, 102, 204, 0.3);
+  border-radius: 8px;
+  color: #00d4ff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+}
+
+.providerButton:hover {
+  background: rgba(0, 102, 204, 0.2);
+  border-color: rgba(0, 212, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+.providerButton.active {
+  background: linear-gradient(135deg, #0066cc 0%, #00d4ff 100%);
+  border-color: #00d4ff;
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
+}
+
+/* ============================================================================
+   FILTERS
+   ============================================================================ */
+
+.filterContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.filterGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.filterLabel {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #00d4ff;
+}
+
+.filterSelect {
+  padding: 0.75rem;
+  background: rgba(0, 102, 204, 0.1);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  border-radius: 6px;
+  color: #ffffff;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filterSelect:hover,
+.filterSelect:focus {
+  background: rgba(0, 102, 204, 0.2);
+  border-color: rgba(0, 212, 255, 0.6);
+  outline: none;
+}
+
+/* ============================================================================
+   VOICE LIST
+   ============================================================================ */
+
+.voiceList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.voiceCard {
+  padding: 1.25rem;
+  background: rgba(0, 102, 204, 0.05);
+  border: 2px solid rgba(0, 212, 255, 0.2);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  user-select: none;
+}
+
+.voiceCard:hover {
+  background: rgba(0, 102, 204, 0.15);
+  border-color: rgba(0, 212, 255, 0.5);
+  transform: translateY(-4px);
+}
+
+.voiceCard.selected {
+  background: rgba(0, 212, 255, 0.15);
+  border-color: #00d4ff;
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+}
+
+.voiceCardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.75rem;
+}
+
+.voiceName {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0;
+}
+
+.voiceLanguage {
+  font-size: 0.75rem;
+  background: rgba(0, 212, 255, 0.2);
+  color: #00d4ff;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.voiceCardMeta {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.voiceMeta {
+  font-size: 0.8rem;
+  background: rgba(0, 102, 204, 0.2);
+  color: #0066cc;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  text-transform: capitalize;
+}
+
+.loadingMessage,
+.emptyMessage {
+  text-align: center;
+  padding: 2rem;
+  color: #00d4ff;
+  font-size: 0.95rem;
+}
+
+/* ============================================================================
+   PREVIEW SECTION
+   ============================================================================ */
+
+.previewContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 1rem;
+  align-items: flex-end;
+}
+
+.previewInputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #00d4ff;
+}
+
+.previewTextarea {
+  padding: 0.75rem;
+  background: rgba(0, 102, 204, 0.1);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  border-radius: 6px;
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-family: inherit;
+  resize: vertical;
+  min-height: 80px;
+  transition: all 0.3s ease;
+}
+
+.previewTextarea:hover,
+.previewTextarea:focus {
+  background: rgba(0, 102, 204, 0.2);
+  border-color: rgba(0, 212, 255, 0.6);
+  outline: none;
+}
+
+.charCount {
+  font-size: 0.75rem;
+  color: #0066cc;
+  text-align: right;
+}
+
+.playButton {
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, #0066cc 0%, #00d4ff 100%);
+  border: none;
+  border-radius: 6px;
+  color: #ffffff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.playButton:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
+}
+
+.playButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ============================================================================
+   VOICE PARAMETERS
+   ============================================================================ */
+
+.parametersGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+.parameterGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.parameterLabel {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #00d4ff;
+}
+
+.slider {
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(0, 102, 204, 0.2);
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #0066cc 0%, #00d4ff 100%);
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 212, 255, 0.4);
+  transition: all 0.3s ease;
+}
+
+.slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.6);
+}
+
+.slider::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #0066cc 0%, #00d4ff 100%);
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 0 10px rgba(0, 212, 255, 0.4);
+  transition: all 0.3s ease;
+}
+
+.slider::-moz-range-thumb:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.6);
+}
+
+.parameterRange {
+  font-size: 0.75rem;
+  color: #0066cc;
+  text-align: right;
+}
+
+/* ============================================================================
+   LANGUAGE SLOT ASSIGNMENT
+   ============================================================================ */
+
+.slotGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.slotCard {
+  padding: 1.5rem;
+  background: rgba(0, 102, 204, 0.05);
+  border: 2px solid rgba(0, 212, 255, 0.2);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.slotTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #00d4ff;
+  margin: 0;
+}
+
+.slotAssigned {
+  padding: 1rem;
+  background: rgba(0, 212, 255, 0.1);
+  border-radius: 6px;
+  border-left: 3px solid #00d4ff;
+}
+
+.slotVoiceName {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 0.25rem 0;
+}
+
+.slotProvider {
+  font-size: 0.8rem;
+  color: #0066cc;
+  margin: 0;
+}
+
+.slotEmpty {
+  padding: 1rem;
+  text-align: center;
+  color: #0066cc;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.assignButton {
+  padding: 0.75rem 1rem;
+  background: rgba(0, 212, 255, 0.1);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  border-radius: 6px;
+  color: #00d4ff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.assignButton:hover:not(:disabled) {
+  background: rgba(0, 212, 255, 0.2);
+  border-color: #00d4ff;
+}
+
+.assignButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ============================================================================
+   CONVERSATION MODE ASSIGNMENT
+   ============================================================================ */
+
+.modesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.modeCard {
+  padding: 1rem;
+  background: rgba(0, 102, 204, 0.05);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.modeName {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #00d4ff;
+  margin: 0;
+}
+
+.modeLanguageSelect {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.modeLabel {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #0066cc;
+}
+
+.modeSelect {
+  padding: 0.5rem;
+  background: rgba(0, 102, 204, 0.1);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  border-radius: 4px;
+  color: #ffffff;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.modeSelect:hover,
+.modeSelect:focus {
+  background: rgba(0, 102, 204, 0.2);
+  border-color: rgba(0, 212, 255, 0.5);
+  outline: none;
+}
+
+.modeAssigned {
+  padding: 0.75rem;
+  background: rgba(0, 212, 255, 0.1);
+  border-radius: 4px;
+  border-left: 2px solid #00d4ff;
+}
+
+.modeVoiceName {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 0.2rem 0;
+}
+
+.modeProvider {
+  font-size: 0.75rem;
+  color: #0066cc;
+  margin: 0;
+}
+
+.modeEmpty {
+  padding: 0.75rem;
+  text-align: center;
+  color: #0066cc;
+  font-size: 0.8rem;
+  margin: 0;
+}
+
+.modeAssignButton {
+  padding: 0.5rem;
+  background: rgba(0, 212, 255, 0.1);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  border-radius: 4px;
+  color: #00d4ff;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.modeAssignButton:hover:not(:disabled) {
+  background: rgba(0, 212, 255, 0.2);
+  border-color: #00d4ff;
+}
+
+.modeAssignButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ============================================================================
+   SAVE SECTION
+   ============================================================================ */
+
+.saveContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+}
+
+.saveButton {
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, #0066cc 0%, #00d4ff 100%);
+  border: none;
+  border-radius: 8px;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+}
+
+.saveButton:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
+}
+
+.saveButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ============================================================================
+   MESSAGES
+   ============================================================================ */
+
+.errorMessage {
+  padding: 1rem;
+  background: rgba(255, 0, 0, 0.1);
+  border: 1px solid rgba(255, 0, 0, 0.3);
+  border-radius: 6px;
+  color: #ff6b6b;
+  font-size: 0.9rem;
+  animation: slideInDown 0.3s ease-out;
+}
+
+.successMessage {
+  padding: 1rem;
+  background: rgba(0, 255, 0, 0.1);
+  border: 1px solid rgba(0, 255, 0, 0.3);
+  border-radius: 6px;
+  color: #51cf66;
+  font-size: 0.9rem;
+  animation: slideInDown 0.3s ease-out;
+}
+
+/* ============================================================================
+   ANIMATIONS
+   ============================================================================ */
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================================================
+   RESPONSIVE DESIGN
+   ============================================================================ */
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .title {
+    font-size: 1.75rem;
+  }
+
+  .section {
+    padding: 1.5rem;
+  }
+
+  .previewContainer {
+    grid-template-columns: 1fr;
+  }
+
+  .playButton {
+    width: 100%;
+  }
+
+  .parametersGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .slotGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .modesGrid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+
+  .providerGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0.5rem;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .section {
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .sectionTitle {
+    font-size: 1.1rem;
+  }
+
+  .voiceList {
+    grid-template-columns: 1fr;
+  }
+
+  .providerGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .modesGrid {
+    grid-template-columns: 1fr;
+  }
+}
