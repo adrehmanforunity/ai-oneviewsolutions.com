@@ -54,7 +54,7 @@ export class ProviderError extends Error {
 
 function buildHeaders(apiKey: string): Record<string, string> {
   return {
-    "Authorization": Bearer ,
+    "Authorization": `Bearer ${apiKey}`,
     "Content-Type": "application/json",
   };
 }
@@ -110,7 +110,7 @@ export async function sendTTSRequest(
     const bodyObj: Record<string, unknown> = { voice_id: request.voiceId, text: request.text };
     if (request.speed !== undefined) bodyObj.speed = request.speed;
     if (request.pitch !== undefined) bodyObj.pitch = request.pitch;
-    const response = await fetch(${UPLIFT_BASE_URL}/tts, {
+    const response = await fetch(`${UPLIFT_BASE_URL}/tts`, {
       method: "POST",
       headers: buildHeaders(apiKey),
       body: JSON.stringify(bodyObj),
@@ -128,8 +128,8 @@ export async function sendTTSRequest(
     clearTimeout(timerId);
     if (error instanceof ProviderError) throw error;
     if (error instanceof Error) {
-      if (error.name === "AbortError") throw new ProviderError(Request timed out after ms, "TIMEOUT");
-      throw new ProviderError(Network error: , "NETWORK_ERROR");
+      if (error.name === "AbortError") throw new ProviderError(`Request timed out after ${timeoutMs}ms`, "TIMEOUT");
+      throw new ProviderError(`Network error: ${error.message}`, "NETWORK_ERROR");
     }
     throw new ProviderError("Unknown error occurred", "NETWORK_ERROR");
   }
@@ -141,7 +141,7 @@ export async function listVoices(
 ): Promise<VoiceMetadata[]> {
   const { controller, timerId } = createTimeoutController(timeoutMs);
   try {
-    const response = await fetch(${UPLIFT_BASE_URL}/voices, {
+    const response = await fetch(`${UPLIFT_BASE_URL}/voices`, {
       method: "GET",
       headers: buildHeaders(apiKey),
       signal: controller.signal,
@@ -164,8 +164,8 @@ export async function listVoices(
     clearTimeout(timerId);
     if (error instanceof ProviderError) throw error;
     if (error instanceof Error) {
-      if (error.name === "AbortError") throw new ProviderError(Request timed out after ms, "TIMEOUT");
-      throw new ProviderError(Network error: , "NETWORK_ERROR");
+      if (error.name === "AbortError") throw new ProviderError(`Request timed out after ${timeoutMs}ms`, "TIMEOUT");
+      throw new ProviderError(`Network error: ${error.message}`, "NETWORK_ERROR");
     }
     throw new ProviderError("Unknown error occurred", "NETWORK_ERROR");
   }
@@ -176,7 +176,7 @@ export async function testKey(apiKey: string): Promise<KeyTestResult> {
   const startTime = Date.now();
   try {
     const body = JSON.stringify({ voice_id: KEY_TEST_VOICE_ID, text: KEY_TEST_TEXT });
-    const response = await fetch(${UPLIFT_BASE_URL}/tts, {
+    const response = await fetch(`${UPLIFT_BASE_URL}/tts`, {
       method: "POST",
       headers: buildHeaders(apiKey),
       body,
@@ -194,8 +194,8 @@ export async function testKey(apiKey: string): Promise<KeyTestResult> {
     clearTimeout(timerId);
     if (error instanceof ProviderError) throw error;
     if (error instanceof Error) {
-      if (error.name === "AbortError") throw new ProviderError(Key test timed out after ms, "TIMEOUT");
-      throw new ProviderError(Network error during key test: , "NETWORK_ERROR");
+      if (error.name === "AbortError") throw new ProviderError(`Key test timed out after ${KEY_TEST_TIMEOUT_MS}ms`, "TIMEOUT");
+      throw new ProviderError(`Network error during key test: ${error.message}`, "NETWORK_ERROR");
     }
     throw new ProviderError("Unknown error during key test", "NETWORK_ERROR");
   }
