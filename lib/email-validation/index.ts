@@ -284,7 +284,7 @@ function validateDomain(domain: string): EmailValidationResult {
     }
 
     // Check for invalid characters in label
-    const validLabelChars = /^[a-zA-Z0-9\-\u0080-\uFFFF]+$/u;
+    const validLabelChars = /^[a-zA-Z0-9\-]+$/;
     if (!validLabelChars.test(label)) {
       return {
         valid: false,
